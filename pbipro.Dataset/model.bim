@@ -1,0 +1,191 @@
+{
+  "compatibilityLevel": 1550,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.123.742.0 (23.11)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"AMZN\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "DynamicImprovement": "HighConfidence",
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "AMZN",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "47a48a60-0618-4278-b2c1-e4f217f1110d",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Open",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "f4754240-6da7-447d-a0dc-720841c8af40",
+            "sourceColumn": "Open",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "High",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "d8a51e94-6915-4e65-88ec-d610995cf6e8",
+            "sourceColumn": "High",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Low",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "2d845f48-8000-4fe3-ad92-fde679d6455f",
+            "sourceColumn": "Low",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Close",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "91e44cbd-b95a-4c03-bfb1-1c1f5328d984",
+            "sourceColumn": "Close",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Adj Close",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "d971bbf6-c6dd-4e7b-aaaf-b52fab208bd9",
+            "sourceColumn": "Adj Close",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Volume",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "1f1ed319-5e41-4334-aa64-74eb1fae908e",
+            "sourceColumn": "Volume",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "3eeef284-3861-49cf-8eeb-29abeb170aa9",
+        "partitions": [
+          {
+            "name": "AMZN",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\Backup\\GitHome\\pbi\\pbiprotraining\\AMZN.csv\"),[Delimiter=\",\", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Date\", type date}, {\"Open\", type number}, {\"High\", type number}, {\"Low\", type number}, {\"Close\", type number}, {\"Adj Close\", type number}, {\"Volume\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
